@@ -413,22 +413,6 @@
         .job-list {
             margin-top: 20px;
         }
-        
-        /* Liste des tâches avec de simples puces rondes unies */
-        .job-item {
-            margin-bottom: 15px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .job-item::before {
-            content: '•';
-            position: absolute;
-            top: -2px;
-            left: 0;
-            color: var(--color-primary);
-            font-size: 1.5rem;
-        }
 
         /* --- EXPERTISES (Grid Cards & Stylized tags) --- */
         .skills-grid {
@@ -487,22 +471,7 @@
             flex-direction: column;
             gap: 12px;
         }
-        
-        /* Listes de compétences avec puces rondes unies */
-        .tag-item {
-            padding-left: 20px;
-            position: relative;
-            color: var(--text-muted);
-        }
-
-        .tag-item::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            top: -2px;
-            color: var(--color-secondary);
-            font-size: 1.5rem;
-        }
+       
 
         /* --- EXTRA (Formation) --- */
         .extra-flex {
@@ -534,27 +503,31 @@
             font-size: 1.5rem;
             flex-shrink: 0;
         }
+            /* Nettoyage des anciennes méthodes d'alignement */
+            .job-item, .tag-item, .extra-item {
+                margin-bottom: 15px;
+                display: flex;       /* Utilise Flexbox */
+                align-items: flex-start; /* Aligne tout en haut, ou 'center' pour centrer verticalement */
+                gap: 10px;           /* Espace entre la puce et le texte */
+                position: relative;
+                padding-left: 0;     /* On annule le padding-left */
+            }
+            
+            /* On utilise des pseudo-éléments pour les puces */
+            .job-item::before, .tag-item::before, .extra-item::before {
+                content: '•';
+                color: var(--color-primary);
+                font-size: 1.2rem;
+                line-height: 1.7;    /* Important : doit correspondre au line-height du texte */
+                flex-shrink: 0;      /* Empêche la puce de s'écraser */
+            }
 
+/* Ajustement spécifique pour les intérêts */
+.extra-item::before { color: var(--color-accent); }
         .extra-list {
             margin-top: 12px;
             font-size: 0.95rem;
             color: var(--text-muted);
-        }
-
-        /* Listes extra avec puces rondes pour rester harmonieux */
-        .extra-item {
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .extra-item::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            top: -2px;
-            color: var(--color-accent);
-            font-size: 1.5rem;
         }
 
         /* --- CONTACT SECTION --- */
