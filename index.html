@@ -158,11 +158,6 @@
             color: var(--color-primary);
         }
 
-        #funny-btn.turbo-mode {
-            animation: turbo 1s linear infinite;
-            border-image: var(--grade-funny) 1;
-        }
-
         /* --- LAYOUT UTILITIES --- */
         .section-container {
             max-width: 1100px;
@@ -682,7 +677,7 @@
             </div>
             <div class="controls-group">
                 <button id="theme-toggle" class="btn-control">Mode</button>
-                <button id="funny-btn" class="btn-control"><span id="click-count">0</span>%</button>
+                <a href="https://adavan.fr" target="_blank" class="btn-control">Photographie</a>
             </div>
         </div>
     </nav>
@@ -841,6 +836,7 @@
                         <span class="tag-item">Excel Avancé</span>
                         <span class="tag-item">Notion</span>
                         <span class="tag-item">Jira, Monday, Asana</span>
+                        <span class="tag-item">Photoshop, Lightroom, davinci resolve</span>
                         <span class="tag-item">CMS / CRM</span>
                     </div>
                 </div>
@@ -973,42 +969,6 @@
         }, { root: null, threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
         reveals.forEach(reveal => revealObserver.observe(reveal));
-
-        // --- FUNNY BUTTON BOOSTER ---
-        const funnyBtn = document.getElementById('funny-btn');
-        const clickCountSpan = document.getElementById('click-count');
-        const bodyElement = document.body;
-        let clicks = 0;
-        
-        const successLevels = {
-            10: { vibe: "rgba(108, 92, 231, 0.1)" },
-            25: { vibe: "rgba(9, 132, 227, 0.1)" },
-            50: { vibe: "rgba(232, 67, 147, 0.1)" },
-            100: { vibe: "rgba(255, 255, 255, 0.1)" }
-        };
-
-        funnyBtn.addEventListener('click', () => {
-            clicks++;
-            clickCountSpan.textContent = clicks;
-            
-            funnyBtn.style.animation = 'none';
-            funnyBtn.offsetHeight; 
-            funnyBtn.style.animation = 'pulse 0.5s ease-out';
-
-            if (successLevels[clicks]) {
-                if (clicks < 100) {
-                    bodyElement.style.backgroundColor = successLevels[clicks].vibe;
-                    setTimeout(() => { bodyElement.style.backgroundColor = 'var(--bg-body)'; }, 1000);
-                } else if (clicks === 100) {
-                    funnyBtn.classList.add('turbo-mode');
-                    document.querySelectorAll('.job-card, .skill-card').forEach(card => {
-                        card.style.animation = 'pulse 2s infinite';
-                    });
-                    document.querySelector('.hero-name').style.animation = 'turbo 2s linear infinite';
-                    alert("🚀 PRODUCTIVITÉ MAXIMALE ATTEINTE !\nSite propulsé à 300%.");
-                }
-            }
-        });
     </script>
 </body>
 </html>
