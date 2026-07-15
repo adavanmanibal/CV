@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adavan Manibal | Chef de Projet Digital</title>
+    <style>
+        /* --- VARIABLES & COULEURS --- */
+        :root {
+            --bg-body: #fdfdff;
+            --bg-card: #ffffff;
+            --bg-section-alt: #f8f9fa;
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+            --border-color: rgba(0,0,0,0.05);
+            
+            --grade-primary: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            --grade-secondary: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
+            --grade-accent: linear-gradient(135deg, #e84393 0%, #ff78b0 100%);
+            --grade-funny: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+
+            --color-primary: #6c5ce7;
+            --color-secondary: #0984e3;
+            --color-accent: #e84393;
+            
+            --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.03);
+            --shadow-card: 0 10px 30px rgba(108, 92, 231, 0.08);
+            --shadow-hover: 0 15px 45px rgba(108, 92, 231, 0.15);
+            
+            --transition-main: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        [data-theme="dark"] {
+            --bg-body: #131419;
+            --bg-card: #1c1e26;
+            --bg-section-alt: #181a20;
+            --text-main: #dfe6e9;
+            --text-muted: #b2bec3;
+            --border-color: rgba(255,255,255,0.05);
+            
+            --grade-primary: linear-gradient(135deg, #8c7ae6 0%, #a29bfe 100%);
+            --grade-secondary: linear-gradient(135deg, #00a8ff 0%, #74b9ff 100%);
+            --grade-accent: linear-gradient(135deg, #f368e0 0%, #ff78b0 100%);
+            
+            --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.2);
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 15px 45px rgba(108, 92, 231, 0.2);
+        }
+        
+        /* --- RESET & TYPOGRAPHIE --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-weight: 300 !important;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition-main); }
+        ul { list-style: none; }
+        
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition-main);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            background: var(--grade-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-primary);
+            transition: var(--transition-main);
+        }
+
+        .nav-link:hover::after { width: 100%; }
+
+        /* Boutons de contrôle dans la nav */
+        .controls-group {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+            border-left: 1px solid var(--border-color);
+            padding-left: 20px;
+        }
+
+        .btn-control {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-main);
+        }
+        
+        .btn-control:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        #funny-btn.turbo-mode {
+            animation: turbo 1s linear infinite;
+            border-image: var(--grade-funny) 1;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .bg-alt {
+            background-color: var(--bg-section-alt);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); } 100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); } }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        @keyframes turbo { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px; 
+            position: relative;
+        }
+        
+        .hero-content {
+            animation: slideUp 1s ease;
+            max-width: 800px;
+        }
+
+        .hero-greeting {
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .hero-name {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero-title {
+            font-size: 1.8rem;
+            background: var(--grade-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--grade-primary);
+            color: #ffffff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition-main);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* --- SECTION TITRES --- */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: var(--grade-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+        }
+
+        .section-line {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        /* --- PROFIL (About) --- */
+        .profil-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .profil-image-placeholder {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            background: var(--grade-secondary);
+            opacity: 0.1;
+            position: relative;
+        }
+
+        .profil-image-placeholder::after {
+            content: 'AM.';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: var(--text-main);
+        }
+
+        .profil-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+        }
+
+        /* --- PARCOURS (Timeline) --- */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 100%;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            left: -35px;
+            width: 11px;
+            height: 11px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 5px var(--bg-body);
+            transition: var(--transition-main);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.5);
+            background: var(--color-accent);
+        }
+
+        .job-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-main);
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-card);
+            border-color: rgba(108, 92, 231, 0.2);
+        }
+
+        .job-header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .job-title {
+            font-size: 1.4rem;
+            color: var(--text-main);
+        }
+        
+        .job-company {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        
+        .job-meta {
+            font-size: 0.85rem;
+            color: var(--color-secondary);
+            border: 1px solid var(--color-secondary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .brand-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: var(--bg-section-alt);
+            border-radius: 50px;
+            font-size: 0.85rem;
+        }
+        
+        .brand-link:hover {
+            background: var(--grade-primary);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+        
+        .brand-img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ffffff;
+            padding: 2px;
+            object-fit: contain;
+        }
+
+        .job-list {
+            margin-top: 20px;
+        }
+        
+        /* Liste des tâches avec de simples puces rondes unies */
+        .job-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .job-item::before {
+            content: '•';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            color: var(--color-primary);
+            font-size: 1.5rem;
+        }
+
+        /* --- EXPERTISES (Grid Cards & Stylized tags) --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-main);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--grade-secondary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .skill-card:hover::before { transform: scaleX(1); }
+
+        /* Pictogrammes en couleur unie */
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            color: var(--color-primary);
+        }
+
+        .skill-group-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .tag-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        /* Listes de compétences avec puces rondes unies */
+        .tag-item {
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .tag-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: var(--color-secondary);
+            font-size: 1.5rem;
+        }
+
+        /* --- EXTRA (Formation) --- */
+        .extra-flex {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .extra-box {
+            flex: 1;
+            min-width: 300px;
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .extra-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--bg-section-alt);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .extra-list {
+            margin-top: 12px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Listes extra avec puces rondes pour rester harmonieux */
+        .extra-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .extra-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: var(--color-accent);
+            font-size: 1.5rem;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.1rem;
+        }
+
+        .contact-detail-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            transition: var(--transition-main);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--grade-primary);
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-main);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .profil-grid { grid-template-columns: 1fr; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .hero-name { font-size: 3rem; }
+            .hero-title { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- --- NAVIGATION --- -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">AM.</a>
+            <div class="nav-links">
+                <a href="#profil" class="nav-link">Profil</a>
+                <a href="#parcours" class="nav-link">Parcours</a>
+                <a href="#expertises" class="nav-link">Expertises</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="controls-group">
+                <button id="theme-toggle" class="btn-control">Mode</button>
+                <button id="funny-btn" class="btn-control"><span id="click-count">0</span>%</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- --- HERO SECTION --- -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-greeting">Portfolio & CV</span>
+            <h1 class="hero-name">Adavan Manibal</h1>
+            <h2 class="hero-title">Chef de Projet Digital & E-commerce</h2>
+            <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Accompagnement, croissance digitale et stratégie e-commerce dans des environnements multi-marques exigeants.
+            </p>
+            <a href="#contact" class="btn-primary">Discutons de votre projet</a>
+        </div>
+    </section>
+
+    <!-- --- SECTION PROFIL --- -->
+    <section id="profil" class="bg-alt">
+        <div class="section-container reveal">
+            <div class="section-header">
+                <h3 class="section-title">À propos</h3>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="profil-grid">
+                <div class="profil-image-placeholder"></div>
+                <div>
+                    <p class="profil-text">Fort de 7 ans d'expérience, j'accompagne la croissance digitale et e-commerce dans des environnements multi-marques exigeants. Actuellement en charge de la stratégie web de 5 sociétés, je pilote l'intégralité de l'écosystème digital : de l'acquisition de trafic orientée ROI (Google/Meta Ads) jusqu'à la refonte et la migration technique d'infrastructures. Mon approche repose sur une forte culture de la donnée pour aligner la technique, le marketing et les objectifs de vente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- SECTION PARCOURS --- -->
+    <section id="parcours">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <h3 class="section-title">Expériences</h3>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="timeline">
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="job-card">
+                        <div class="job-header-main">
+                            <h4 class="job-title">Responsable Webmarketing</h4>
+                            <span class="job-meta">2022 - Présent</span>
+                        </div>
+                        <p class="job-company">Winalco (Groupe de 5 sociétés) | Tours</p>
+                        
+                        <div class="brand-logos">
+                            <a href="https://www.gs27.com" target="_blank" class="brand-link">
+                                <img src="https://www.google.com/s2/favicons?domain=gs27.com&sz=128" alt="Logo" class="brand-img">
+                                <span>GS27</span>
+                            </a>
+                            <a href="https://www.restom.net" target="_blank" class="brand-link">
+                                <img src="https://www.google.com/s2/favicons?domain=restom.net&sz=128" alt="Logo" class="brand-img">
+                                <span>Restom</span>
+                            </a>
+                            <a href="https://spheretech-europe.com" target="_blank" class="brand-link">
+                                <img src="https://www.google.com/s2/favicons?domain=spheretech-europe.com&sz=128" alt="Logo" class="brand-img">
+                                <span>Spheretech</span>
+                            </a>
+                        </div>
+
+                        <ul class="job-list">
+                            <li class="job-item">Pilotage de la stratégie e-commerce multisite (Prestashop & Wordpress) pour l'ensemble du groupe.</li>
+                            <li class="job-item">Gestion et optimisation des campagnes Google Ads / Meta Ads (orientation ROI) et marketing automation.</li>
+                            <li class="job-item">Pilotage de la migration complète de l'infrastructure et des serveurs de la plateforme e-commerce Spheretech.</li>
+                            <li class="job-item">Conception de reportings automatisés et analyse avancée de la performance digitale.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="job-card">
+                        <div class="job-header-main">
+                            <h4 class="job-title">Chargé Webmarketing & E-commerce</h4>
+                            <span class="job-meta">2018 - 2021</span>
+                        </div>
+                        <p class="job-company">Indevho (Groupe hôtelier gérant des hôtels indépendants) | Paris</p>
+                        
+                        <div class="brand-logos">
+                            <a href="https://www.indevho.com" target="_blank" class="brand-link">
+                                <img src="https://www.google.com/s2/favicons?domain=indevho.com&sz=128" alt="Logo" class="brand-img">
+                                <span>Indevho</span>
+                            </a>
+                        </div>
+
+                        <ul class="job-list">
+                            <li class="job-item">Animation éditoriale SEO et optimisation continue des tunnels de conversion B2C.</li>
+                            <li class="job-item">Gestion complète de l'email marketing : segmentation de la base, automation et analyse.</li>
+                            <li class="job-item">Analyse approfondie des parcours utilisateurs via Google Analytics pour identifier de nouveaux leviers de croissance.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="job-card">
+                        <div class="job-header-main">
+                            <h4 class="job-title">Chargé de Webmarketing</h4>
+                            <span class="job-meta">2017 - 2018</span>
+                        </div>
+                        <p class="job-company">Château de Rochecotte | Tours</p>
+                        
+                        <div class="brand-logos">
+                            <a href="https://www.chateau-de-rochecotte.fr" target="_blank" class="brand-link">
+                                <img src="https://www.google.com/s2/favicons?domain=chateau-de-rochecotte.fr&sz=128" alt="Logo" class="brand-img">
+                                <span>Château de Rochecotte</span>
+                            </a>
+                        </div>
+
+                        <ul class="job-list">
+                            <li class="job-item">Mise en œuvre d'une stratégie cross-canal complète (Web, Réseaux Sociaux, CRM).</li>
+                            <li class="job-item">Production de contenus premium et optimisation du SEO technique on-page.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- --- SECTION EXPERTISES --- -->
+    <section id="expertises" class="bg-alt">
+        <div class="section-container reveal">
+            <div class="section-header">
+                <h3 class="section-title">Mes Services</h3>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="skills-grid">
+                
+                <div class="skill-card reveal">
+                    <span class="skill-icon">🎯</span>
+                    <h4 class="skill-group-title">Marketing Digital</h4>
+                    <div class="tag-container">
+                        <span class="tag-item">SEA (Google Ads, Meta Ads)</span>
+                        <span class="tag-item">SEO Technique</span>
+                        <span class="tag-item">Web Analytics</span>
+                        <span class="tag-item">Dashboarding</span>
+                        <span class="tag-item">Marketing Automation</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <span class="skill-icon">💻</span>
+                    <h4 class="skill-group-title">Outils & Tech</h4>
+                    <div class="tag-container">
+                        <span class="tag-item">Prestashop, WordPress</span>
+                        <span class="tag-item">Excel Avancé</span>
+                        <span class="tag-item">Notion</span>
+                        <span class="tag-item">Jira, Monday, Asana</span>
+                        <span class="tag-item">CMS / CRM</span>
+                    </div>
+                </div>
+
+                <div class="skill-card reveal">
+                    <span class="skill-icon">🤝</span>
+                    <h4 class="skill-group-title">Savoir-être</h4>
+                    <div class="tag-container">
+                        <span class="tag-item">Coordination Transverse</span>
+                        <span class="tag-item">Culture de la Performance</span>
+                        <span class="tag-item">Orientation Résultats</span>
+                        <span class="tag-item">Force de proposition</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- --- SECTION EXTRA --- -->
+    <section>
+        <div class="section-container reveal">
+            <div class="extra-flex">
+                <div class="extra-box">
+                    <div class="extra-icon">🎓</div>
+                    <div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Licence Pro MATIC</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">2018 | IUT de Tours</p>
+                        <ul class="extra-list">
+                            <li class="extra-item">Webmarketing & E-commerce</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="extra-box">
+                    <div class="extra-icon">🌟</div>
+                    <div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Intérêts</h4>
+                        <ul class="extra-list">
+                            <li class="extra-item">Photographie (Mariage - Adavanshots)</li>
+                            <li class="extra-item">Sports (Course à pied, Sports US)</li>
+                            <li class="extra-item">Organisation d'itinéraires</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- SECTION CONTACT --- -->
+    <section id="contact" class="bg-alt">
+        <div class="section-container reveal">
+            <div class="section-header">
+                <h3 class="section-title">Contact</h3>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-info-block">
+                    <p style="font-size: 1.2rem; margin-bottom: 20px;">Prêt à collaborer sur de nouveaux défis digitaux ? N'hésitez pas à me contacter directement.</p>
+                    
+                    <a href="tel:0641040360" class="contact-detail">
+                        <div class="contact-detail-icon">📱</div>
+                        <span>06 41 04 03 60</span>
+                    </a>
+                    
+                    <a href="mailto:adavanmanibal@gmail.com" class="contact-detail">
+                        <div class="contact-detail-icon">✉️</div>
+                        <span>adavanmanibal@gmail.com</span>
+                    </a>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">📍</div>
+                        <span>Tours / Paris</span>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Ceci est une maquette visuelle. Pour que le formulaire fonctionne réellement, il faudra relier l\'attribut action à un service comme Formspree.');">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Votre Nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Votre Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input" placeholder="Votre Message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- FOOTER --- -->
+    <footer>
+        <p>Adavan Manibal &copy; 2026</p>
+    </footer>
+
+    <!-- --- JAVASCRIPT --- -->
+    <script>
+        // --- THÈME SOMBRE ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        htmlElement.setAttribute('data-theme', savedTheme);
+        updateThemeButtonText(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeButtonText(newTheme);
+        });
+
+        function updateThemeButtonText(theme) {
+            themeToggleBtn.textContent = theme === 'dark' ? 'Clair' : 'Sombre';
+        }
+
+        // --- ANIMATIONS SCROLL ---
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { root: null, threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+        reveals.forEach(reveal => revealObserver.observe(reveal));
+
+        // --- FUNNY BUTTON BOOSTER ---
+        const funnyBtn = document.getElementById('funny-btn');
+        const clickCountSpan = document.getElementById('click-count');
+        const bodyElement = document.body;
+        let clicks = 0;
+        
+        const successLevels = {
+            10: { vibe: "rgba(108, 92, 231, 0.1)" },
+            25: { vibe: "rgba(9, 132, 227, 0.1)" },
+            50: { vibe: "rgba(232, 67, 147, 0.1)" },
+            100: { vibe: "rgba(255, 255, 255, 0.1)" }
+        };
+
+        funnyBtn.addEventListener('click', () => {
+            clicks++;
+            clickCountSpan.textContent = clicks;
+            
+            funnyBtn.style.animation = 'none';
+            funnyBtn.offsetHeight; 
+            funnyBtn.style.animation = 'pulse 0.5s ease-out';
+
+            if (successLevels[clicks]) {
+                if (clicks < 100) {
+                    bodyElement.style.backgroundColor = successLevels[clicks].vibe;
+                    setTimeout(() => { bodyElement.style.backgroundColor = 'var(--bg-body)'; }, 1000);
+                } else if (clicks === 100) {
+                    funnyBtn.classList.add('turbo-mode');
+                    document.querySelectorAll('.job-card, .skill-card').forEach(card => {
+                        card.style.animation = 'pulse 2s infinite';
+                    });
+                    document.querySelector('.hero-name').style.animation = 'turbo 2s linear infinite';
+                    alert("🚀 PRODUCTIVITÉ MAXIMALE ATTEINTE !\nSite propulsé à 300%.");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
