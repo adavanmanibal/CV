@@ -3,7 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adavan Manibal | Chef de Projet Digital</title>
+    <title>Adavan Manibal | Chef de Projet Digital & E-commerce</title>
+    <meta name="description" content="Adavan Manibal, chef de projet digital et e-commerce. 7 ans d'expérience en acquisition (Google Ads, Meta Ads), SEO, e-commerce et analyse de la performance. Tours / Paris.">
+    <meta name="author" content="Adavan Manibal">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cv.adavan.fr/">
+
+    <!-- Partage sur les réseaux / messageries -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Adavan Manibal | Chef de Projet Digital & E-commerce">
+    <meta property="og:description" content="7 ans d'expérience en acquisition, e-commerce et analyse de la performance digitale.">
+    <meta property="og:url" content="https://cv.adavan.fr/">
+    <meta property="og:image" content="https://cv.adavan.fr/shooting-portrait-2.jpg">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Police : chargée ici pour être réellement prise en compte (un @import placé
+         au milieu d'une feuille de style est ignoré par le navigateur) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
     <style>
         /* --- VARIABLES & COULEURS --- */
         :root {
@@ -13,24 +33,23 @@
             --text-main: #2d3436;
             --text-muted: #636e72;
             --border-color: rgba(0,0,0,0.05);
-            
+
             --grade-primary: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
             --grade-secondary: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
             --grade-accent: linear-gradient(135deg, #e84393 0%, #ff78b0 100%);
-            --grade-funny: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
 
             --color-primary: #6c5ce7;
             --color-secondary: #0984e3;
             --color-accent: #e84393;
-            
+
             --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.03);
             --shadow-card: 0 10px 30px rgba(108, 92, 231, 0.08);
             --shadow-hover: 0 15px 45px rgba(108, 92, 231, 0.15);
-            
+
             --transition-main: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             --font-family: 'Poppins', 'Segoe UI', sans-serif;
         }
-        
+
         [data-theme="dark"] {
             --bg-body: #131419;
             --bg-card: #1c1e26;
@@ -38,27 +57,24 @@
             --text-main: #dfe6e9;
             --text-muted: #b2bec3;
             --border-color: rgba(255,255,255,0.05);
-            
+
             --grade-primary: linear-gradient(135deg, #8c7ae6 0%, #a29bfe 100%);
             --grade-secondary: linear-gradient(135deg, #00a8ff 0%, #74b9ff 100%);
             --grade-accent: linear-gradient(135deg, #f368e0 0%, #ff78b0 100%);
-            
+
             --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.2);
             --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
             --shadow-hover: 0 15px 45px rgba(108, 92, 231, 0.2);
         }
-        
-        /* --- RESET & TYPOGRAPHIE --- */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
+        /* --- RESET & TYPOGRAPHIE --- */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-weight: 300 !important;
             -webkit-font-smoothing: antialiased;
         }
-        
+
         html {
             scroll-behavior: smooth;
         }
@@ -67,13 +83,32 @@
             background-color: var(--bg-body);
             color: var(--text-main);
             font-family: var(--font-family);
+            font-weight: 300;
             overflow-x: hidden;
             line-height: 1.7;
         }
 
+        /* Un cran au-dessus du corps de texte : garde le style léger
+           tout en redonnant de la hiérarchie aux titres */
+        h1, h2, h3, h4, .nav-logo, .btn-primary, .btn-submit {
+            font-weight: 400;
+        }
+
         a { text-decoration: none; color: inherit; transition: var(--transition-main); }
         ul { list-style: none; }
-        
+
+        /* Accessibilité : focus clavier visible */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 3px;
+        }
+
+        /* Les ancres ne passent plus sous la navigation fixe */
+        section[id] { scroll-margin-top: 90px; }
+
         /* --- NAVIGATION --- */
         nav {
             position: fixed;
@@ -100,6 +135,7 @@
             font-size: 1.5rem;
             background: var(--grade-primary);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -147,12 +183,14 @@
             padding: 8px 15px;
             border-radius: 50px;
             cursor: pointer;
+            font-family: var(--font-family);
+            font-weight: 300;
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: var(--transition-main);
         }
-        
+
         .btn-control:hover {
             border-color: var(--color-primary);
             color: var(--color-primary);
@@ -170,14 +208,18 @@
         }
 
         /* --- ANIMATIONS --- */
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); } 100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); } }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
-        @keyframes turbo { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Respect des préférences système (personnes sensibles au mouvement) */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .hero-content { animation: none; }
+            * { transition-duration: 0.01ms !important; }
+        }
 
         /* --- HERO SECTION --- */
         .hero {
@@ -186,10 +228,10 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding-top: 80px; 
+            padding: 120px 20px 60px;
             position: relative;
         }
-        
+
         .hero-content {
             animation: slideUp 1s ease;
             max-width: 800px;
@@ -203,7 +245,7 @@
             margin-bottom: 20px;
             display: block;
         }
-        
+
         .hero-name {
             font-size: 4.5rem;
             line-height: 1.1;
@@ -212,13 +254,28 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        
+
         .hero-title {
             font-size: 1.8rem;
             background: var(--grade-secondary);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+        }
+
+        .hero-pitch {
+            color: var(--text-muted);
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            max-width: 620px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn-primary {
@@ -239,6 +296,24 @@
             box-shadow: var(--shadow-hover);
         }
 
+        .btn-secondary {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition-main);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-5px);
+        }
+
         /* --- SECTION TITRES --- */
         .section-header {
             display: flex;
@@ -253,6 +328,7 @@
             letter-spacing: 3px;
             background: var(--grade-primary);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             white-space: nowrap;
         }
@@ -271,29 +347,19 @@
             align-items: center;
         }
 
-        .profil-image-placeholder {
+        .profil-photo {
             width: 100%;
             aspect-ratio: 1;
+            object-fit: cover;
             border-radius: 20px;
-            background: var(--grade-secondary);
-            opacity: 0.1;
-            position: relative;
-        }
-
-        .profil-image-placeholder::after {
-            content: 'AM.';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4rem;
-            color: var(--text-main);
         }
 
         .profil-text {
             font-size: 1.15rem;
             line-height: 1.9;
         }
+
+        .profil-text + .profil-text { margin-top: 20px; }
 
         /* --- PARCOURS (Timeline) --- */
         .timeline {
@@ -356,18 +422,18 @@
             flex-wrap: wrap;
             gap: 10px;
         }
-        
+
         .job-title {
             font-size: 1.4rem;
             color: var(--text-main);
         }
-        
+
         .job-company {
             font-size: 1.1rem;
             color: var(--text-muted);
             font-style: italic;
         }
-        
+
         .job-meta {
             font-size: 0.85rem;
             color: var(--color-secondary);
@@ -384,7 +450,7 @@
             gap: 15px;
             margin: 20px 0;
         }
-        
+
         .brand-link {
             display: flex;
             align-items: center;
@@ -394,13 +460,13 @@
             border-radius: 50px;
             font-size: 0.85rem;
         }
-        
+
         .brand-link:hover {
             background: var(--grade-primary);
             color: #ffffff;
             transform: translateY(-2px);
         }
-        
+
         .brand-img {
             width: 20px;
             height: 20px;
@@ -452,7 +518,6 @@
 
         .skill-card:hover::before { transform: scaleX(1); }
 
-        /* Pictogrammes en couleur unie */
         .skill-icon {
             font-size: 2.5rem;
             margin-bottom: 20px;
@@ -471,7 +536,6 @@
             flex-direction: column;
             gap: 12px;
         }
-       
 
         /* --- EXTRA (Formation) --- */
         .extra-flex {
@@ -503,27 +567,37 @@
             font-size: 1.5rem;
             flex-shrink: 0;
         }
-            /* Nettoyage des anciennes méthodes d'alignement */
-            .job-item, .tag-item, .extra-item {
-                margin-bottom: 15px;
-                display: flex;       /* Utilise Flexbox */
-                align-items: flex-start; /* Aligne tout en haut, ou 'center' pour centrer verticalement */
-                gap: 10px;           /* Espace entre la puce et le texte */
-                position: relative;
-                padding-left: 0;     /* On annule le padding-left */
-            }
-            
-            /* On utilise des pseudo-éléments pour les puces */
-            .job-item::before, .tag-item::before, .extra-item::before {
-                content: '•';
-                color: var(--color-primary);
-                font-size: 1.2rem;
-                line-height: 1.7;    /* Important : doit correspondre au line-height du texte */
-                flex-shrink: 0;      /* Empêche la puce de s'écraser */
-            }
 
-/* Ajustement spécifique pour les intérêts */
-.extra-item::before { color: var(--color-accent); }
+        .extra-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .extra-subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Puces alignées (listes de postes, compétences, intérêts) */
+        .job-item, .tag-item, .extra-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            position: relative;
+            padding-left: 0;
+        }
+
+        .job-item::before, .tag-item::before, .extra-item::before {
+            content: '•';
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            line-height: 1.7;
+            flex-shrink: 0;
+        }
+
+        .extra-item::before { color: var(--color-accent); }
+
         .extra-list {
             margin-top: 12px;
             font-size: 0.95rem;
@@ -541,6 +615,11 @@
             display: flex;
             flex-direction: column;
             gap: 30px;
+        }
+
+        .contact-intro {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
         }
 
         .contact-detail {
@@ -562,6 +641,7 @@
             color: var(--color-primary);
             font-size: 1.2rem;
             box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
         }
 
         .contact-form {
@@ -584,6 +664,7 @@
             background: var(--bg-body);
             color: var(--text-main);
             font-family: var(--font-family);
+            font-weight: 300;
             transition: var(--transition-main);
         }
 
@@ -606,6 +687,8 @@
             padding: 15px;
             border-radius: 10px;
             cursor: pointer;
+            font-family: var(--font-family);
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: var(--transition-main);
@@ -615,7 +698,14 @@
             transform: translateY(-2px);
             box-shadow: var(--shadow-hover);
         }
-        
+
+        .form-note {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
         /* --- FOOTER --- */
         footer {
             text-align: center;
@@ -625,14 +715,36 @@
             color: var(--text-muted);
             font-size: 0.9rem;
         }
-        
+
         /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
-            .nav-links { display: none; }
+            /* La navigation reste accessible sur mobile : les liens passent
+               simplement sur une seconde ligne au lieu de disparaître */
+            .nav-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 18px;
+            }
+            .nav-link { font-size: 0.8rem; }
+            .controls-group { margin-left: 0; }
+
+            .hero { padding-top: 180px; }
+            .hero-name { font-size: 2.6rem; }
+            .hero-title { font-size: 1.3rem; }
+            .hero-pitch { font-size: 1rem; }
+            .btn-primary, .btn-secondary { font-size: 0.95rem; padding: 14px 30px; }
+
             .profil-grid { grid-template-columns: 1fr; }
             .contact-wrapper { grid-template-columns: 1fr; }
-            .hero-name { font-size: 3rem; }
-            .hero-title { font-size: 1.4rem; }
+            .section-container { padding: 70px 20px; }
+            .section-title { font-size: 1.6rem; letter-spacing: 2px; }
+            .job-card, .skill-card { padding: 28px; }
         }
     </style>
 </head>
@@ -645,12 +757,12 @@
             <div class="nav-links">
                 <a href="#profil" class="nav-link">Profil</a>
                 <a href="#parcours" class="nav-link">Parcours</a>
-                <a href="#expertises" class="nav-link">Expertises</a>
+                <a href="#expertises" class="nav-link">Compétences</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <div class="controls-group">
                 <button id="theme-toggle" class="btn-control">Mode</button>
-                <a href="https://adavan.fr" target="_blank" class="btn-control">Photographie</a>
+                <a href="https://adavan.fr" target="_blank" rel="noopener" class="btn-control">Photographie</a>
             </div>
         </div>
     </nav>
@@ -660,11 +772,14 @@
         <div class="hero-content">
             <span class="hero-greeting">Portfolio & CV</span>
             <h1 class="hero-name">Adavan Manibal</h1>
-            <h2 class="hero-title">Chef de Projet Digital & E-commerce</h2>
-            <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Accompagnement, croissance digitale et stratégie e-commerce dans des environnements multi-marques exigeants.
+            <h2 class="hero-title">Chef de Projet Digital &amp; E-commerce</h2>
+            <p class="hero-pitch">
+                7 ans à faire grandir des sites e-commerce : attirer le bon trafic, améliorer le parcours d'achat et suivre ce que ça rapporte vraiment.
             </p>
-            <a href="#contact" class="btn-primary">Discutons de votre projet</a>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Me contacter</a>
+                <a href="#parcours" class="btn-secondary">Voir mon parcours</a>
+            </div>
         </div>
     </section>
 
@@ -675,11 +790,12 @@
                 <h3 class="section-title">À propos</h3>
                 <div class="section-line"></div>
             </div>
-            
+
             <div class="profil-grid">
-                <img src="shooting-portrait-2.jpg" alt="Adavan Manibal" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 20px;">
+                <img src="shooting-portrait-2.jpg" alt="Portrait d'Adavan Manibal" class="profil-photo" loading="lazy">
                 <div>
-                    <p class="profil-text">Fort de 7 ans d'expérience, j'accompagne la croissance digitale et e-commerce dans des environnements multi-marques exigeants. Actuellement en charge de la stratégie web de 5 sociétés, je pilote l'intégralité de l'écosystème digital : de l'acquisition de trafic orientée ROI (Google/Meta Ads) jusqu'à la refonte et la migration technique d'infrastructures. Mon approche repose sur une forte culture de la donnée pour aligner la technique, le marketing et les objectifs de vente.</p>
+                    <p class="profil-text">Depuis 7 ans, je travaille sur ce qui fait vendre un site : attirer le bon trafic, fluidifier le parcours d'achat et mesurer ce que chaque euro investi rapporte. Je pilote aujourd'hui le digital de plusieurs sites e-commerce et vitrines, du budget publicitaire jusqu'à la mise en ligne des contenus.</p>
+                    <p class="profil-text">Au quotidien, ça veut dire des campagnes Google et Meta Ads à arbitrer, du SEO à faire avancer, des campagnes emailing à préparer, des fiches produits à alimenter et des reportings à construire pour savoir où appuyer. J'aime autant les chiffres que le terrain, et je suis assez à l'aise techniquement pour échanger d'égal à égal avec les développeurs et les agences, sans être moi-même développeur.</p>
                 </div>
             </div>
         </div>
@@ -692,9 +808,9 @@
                 <h3 class="section-title">Expériences</h3>
                 <div class="section-line"></div>
             </div>
-            
+
             <div class="timeline">
-                
+
                 <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="job-card">
@@ -702,29 +818,31 @@
                             <h4 class="job-title">Responsable Webmarketing</h4>
                             <span class="job-meta">2022 - Présent</span>
                         </div>
-                        <p class="job-company">Winalco (Groupe de 5 sociétés) | Tours</p>
-                        
+                        <p class="job-company">Winalco | Tours</p>
+
                         <div class="brand-logos">
-                            <a href="https://www.gs27.com" target="_blank" class="brand-link">
-                                <img src="https://www.google.com/s2/favicons?domain=gs27.com&sz=128" alt="Logo" class="brand-img">
+                            <a href="https://www.gs27.com" target="_blank" rel="noopener" class="brand-link">
+                                <img src="https://www.google.com/s2/favicons?domain=gs27.com&sz=128" alt="" class="brand-img" loading="lazy">
                                 <span>GS27</span>
                             </a>
-                            <a href="https://www.restom.net" target="_blank" class="brand-link">
-                                <img src="https://www.google.com/s2/favicons?domain=restom.net&sz=128" alt="Logo" class="brand-img">
+                            <a href="https://www.restom.net" target="_blank" rel="noopener" class="brand-link">
+                                <img src="https://www.google.com/s2/favicons?domain=restom.net&sz=128" alt="" class="brand-img" loading="lazy">
                                 <span>Restom</span>
                             </a>
-                            <a href="https://spheretech-europe.com" target="_blank" class="brand-link">
-                                <img src="https://www.google.com/s2/favicons?domain=spheretech-europe.com&sz=128" alt="Logo" class="brand-img">
+                            <a href="https://spheretech-europe.com" target="_blank" rel="noopener" class="brand-link">
+                                <img src="https://www.google.com/s2/favicons?domain=spheretech-europe.com&sz=128" alt="" class="brand-img" loading="lazy">
                                 <span>Spheretech</span>
                             </a>
                         </div>
 
                         <ul class="job-list">
-                            <li class="job-item">Pilotage de la stratégie e-commerce multisite (Prestashop & Wordpress) pour l'ensemble du groupe</li>
-                            <li class="job-item">Gestion et optimisation des campagnes Google Ads / Meta Ads (orientation ROI) et marketing automation</li>
+                            <li class="job-item">Pilotage des sites e-commerce et vitrines du groupe (PrestaShop, WordPress) : contenus, catalogue, mises à jour et suivi des ventes</li>
+                            <li class="job-item">Gestion des campagnes Google Ads et Meta Ads : arbitrage des budgets, optimisation continue et suivi du retour sur investissement</li>
+                            <li class="job-item">SEO, emailing et marketing automation : plan de contenu, campagnes et scénarios automatisés</li>
                             <li class="job-item">Conception et mise en ligne d'un site vitrine sous WordPress et Elementor</li>
-                            <li class="job-item">Pilotage de comptes Amazon Seller : création de contenus A+, optimisation du catalogue et gestion des stocks</li>
-                            <li class="job-item">Conception de reportings automatisés et analyse avancée de la performance digitale</li>
+                            <li class="job-item">Gestion des comptes Amazon Seller : contenus A+, optimisation des fiches produits et suivi du catalogue</li>
+                            <li class="job-item">Création des reportings mensuels et analyse de la performance (trafic, ventes, coût d'acquisition)</li>
+                            <li class="job-item">Coordination des projets web avec les agences et prestataires, du cahier des charges à la recette</li>
                         </ul>
                     </div>
                 </div>
@@ -733,22 +851,22 @@
                     <div class="timeline-dot"></div>
                     <div class="job-card">
                         <div class="job-header-main">
-                            <h4 class="job-title">Chargé Webmarketing & E-commerce</h4>
+                            <h4 class="job-title">Chargé Webmarketing &amp; E-commerce</h4>
                             <span class="job-meta">2018 - 2021</span>
                         </div>
-                        <p class="job-company">Indevho (Groupe hôtelier gérant des hôtels indépendants) | Paris</p>
-                        
+                        <p class="job-company">Indevho | Paris</p>
+
                         <div class="brand-logos">
-                            <a href="https://www.indevho.com" target="_blank" class="brand-link">
-                                <img src="https://www.google.com/s2/favicons?domain=indevho.com&sz=128" alt="Logo" class="brand-img">
+                            <a href="https://www.indevho.com" target="_blank" rel="noopener" class="brand-link">
+                                <img src="https://www.google.com/s2/favicons?domain=indevho.com&sz=128" alt="" class="brand-img" loading="lazy">
                                 <span>Indevho</span>
                             </a>
                         </div>
 
                         <ul class="job-list">
-                            <li class="job-item">Animation éditoriale SEO et optimisation continue des tunnels de conversion B2C</li>
-                            <li class="job-item">Gestion complète de l'email marketing : segmentation de la base, automation et analyse</li>
-                            <li class="job-item">Analyse approfondie des parcours utilisateurs via Google Analytics pour identifier de nouveaux leviers de croissance</li>
+                            <li class="job-item">Animation éditoriale SEO et optimisation des tunnels de réservation en ligne</li>
+                            <li class="job-item">Gestion de l'email marketing de bout en bout : segmentation, envois et analyse des résultats</li>
+                            <li class="job-item">Analyse des parcours utilisateurs sous Google Analytics pour identifier les points de friction et les leviers de croissance</li>
                         </ul>
                     </div>
                 </div>
@@ -761,17 +879,17 @@
                             <span class="job-meta">2017 - 2018</span>
                         </div>
                         <p class="job-company">Château de Rochecotte | Tours</p>
-                        
+
                         <div class="brand-logos">
-                            <a href="https://www.chateau-de-rochecotte.fr" target="_blank" class="brand-link">
-                                <img src="https://www.google.com/s2/favicons?domain=chateau-de-rochecotte.fr&sz=128" alt="Logo" class="brand-img">
+                            <a href="https://www.chateau-de-rochecotte.fr" target="_blank" rel="noopener" class="brand-link">
+                                <img src="https://www.google.com/s2/favicons?domain=chateau-de-rochecotte.fr&sz=128" alt="" class="brand-img" loading="lazy">
                                 <span>Château de Rochecotte</span>
                             </a>
                         </div>
 
                         <ul class="job-list">
-                            <li class="job-item">Mise en œuvre d'une stratégie cross-canal complète (Web, Réseaux Sociaux, CRM)</li>
-                            <li class="job-item">Production de contenus premium et optimisation du SEO technique on-page (Balisage, gestion des URLs...)</li>
+                            <li class="job-item">Mise en place d'une stratégie cross-canal : site web, réseaux sociaux et CRM</li>
+                            <li class="job-item">Production de contenus et optimisation du SEO on-page (balisage, structure des URLs, maillage interne)</li>
                         </ul>
                     </div>
                 </div>
@@ -780,49 +898,48 @@
         </div>
     </section>
 
-    <!-- --- SECTION EXPERTISES --- -->
+    <!-- --- SECTION COMPÉTENCES --- -->
     <section id="expertises" class="bg-alt">
         <div class="section-container reveal">
             <div class="section-header">
-                <h3 class="section-title">Mes Services</h3>
+                <h3 class="section-title">Compétences</h3>
                 <div class="section-line"></div>
             </div>
-            
+
             <div class="skills-grid">
-                
+
                 <div class="skill-card reveal">
                     <span class="skill-icon">🎯</span>
-                    <h4 class="skill-group-title">Marketing Digital</h4>
+                    <h4 class="skill-group-title">Acquisition &amp; performance</h4>
                     <div class="tag-container">
-                        <span class="tag-item">SEA (Google Ads, Meta Ads)</span>
-                        <span class="tag-item">SEO technique</span>
-                        <span class="tag-item">Web analytics</span>
-                        <span class="tag-item">Dashboarding</span>
-                        <span class="tag-item">Marketing automation</span>
+                        <span class="tag-item">Google Ads, Meta Ads</span>
+                        <span class="tag-item">SEO on-page et technique</span>
+                        <span class="tag-item">Email marketing et automation</span>
+                        <span class="tag-item">Google Analytics, Search Console, Looker Studio</span>
+                        <span class="tag-item">Reportings et suivi du ROI</span>
                     </div>
                 </div>
 
                 <div class="skill-card reveal">
-                    <span class="skill-icon">💻</span>
-                    <h4 class="skill-group-title">Outils & Tech</h4>
+                    <span class="skill-icon">🛒</span>
+                    <h4 class="skill-group-title">E-commerce &amp; outils</h4>
                     <div class="tag-container">
-                        <span class="tag-item">Prestashop, WordPress</span>
-                        <span class="tag-item">Excel Avancé</span>
-                        <span class="tag-item">Notion</span>
-                        <span class="tag-item">Jira, Monday, Asana</span>
-                        <span class="tag-item">Photoshop, Lightroom, Davinci resolve</span>
-                        <span class="tag-item">CMS / CRM</span>
+                        <span class="tag-item">PrestaShop, WordPress</span>
+                        <span class="tag-item">Amazon Seller Central</span>
+                        <span class="tag-item">Excel avancé, Google Sheets</span>
+                        <span class="tag-item">Notion, Jira, Monday, Asana</span>
+                        <span class="tag-item">Photoshop, Lightroom, DaVinci Resolve</span>
                     </div>
                 </div>
 
                 <div class="skill-card reveal">
                     <span class="skill-icon">🤝</span>
-                    <h4 class="skill-group-title">Savoir-être</h4>
+                    <h4 class="skill-group-title">Façon de travailler</h4>
                     <div class="tag-container">
-                        <span class="tag-item">Coordination transverse</span>
-                        <span class="tag-item">Culture de la performance</span>
-                        <span class="tag-item">Orientation résultats</span>
-                        <span class="tag-item">Force de proposition</span>
+                        <span class="tag-item">Autonome sur un projet de bout en bout</span>
+                        <span class="tag-item">À l'aise entre le marketing, la vente et la technique</span>
+                        <span class="tag-item">Décisions appuyées sur les chiffres</span>
+                        <span class="tag-item">Suivi des agences et prestataires</span>
                     </div>
                 </div>
 
@@ -837,21 +954,21 @@
                 <div class="extra-box">
                     <div class="extra-icon">🎓</div>
                     <div>
-                        <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Licence Pro MATIC</h4>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">2018 | IUT de Tours</p>
+                        <h4 class="extra-title">Licence Pro MATIC</h4>
+                        <p class="extra-subtitle">2018 | IUT de Tours</p>
                         <ul class="extra-list">
-                            <li class="extra-item">Webmarketing & E-commerce</li>
+                            <li class="extra-item">Webmarketing &amp; E-commerce</li>
                         </ul>
                     </div>
                 </div>
                 <div class="extra-box">
                     <div class="extra-icon">🌟</div>
                     <div>
-                        <h4 style="font-size: 1.2rem; margin-bottom: 5px;">Intérêts</h4>
+                        <h4 class="extra-title">En dehors du bureau</h4>
                         <ul class="extra-list">
-                            <li class="extra-item">Photographie</li>
+                            <li class="extra-item">Photographe de mariages et de portraits</li>
                             <li class="extra-item">Sports US</li>
-                            <li class="extra-item">L'Asie</li>
+                            <li class="extra-item">Voyages en Asie</li>
                         </ul>
                     </div>
                 </div>
@@ -869,18 +986,18 @@
 
             <div class="contact-wrapper">
                 <div class="contact-info-block">
-                    <p style="font-size: 1.2rem; margin-bottom: 20px;">Prêt à collaborer sur de nouveaux défis digitaux ? N'hésitez pas à me contacter directement.</p>
-                    
-                    <a href="tel:0641040360" class="contact-detail">
+                    <p class="contact-intro">Une opportunité à me présenter ou une question sur mon parcours ? Écrivez-moi, je réponds rapidement.</p>
+
+                    <a href="tel:+33641040360" class="contact-detail">
                         <div class="contact-detail-icon">📱</div>
                         <span>06 41 04 03 60</span>
                     </a>
-                    
+
                     <a href="mailto:adavanmanibal@gmail.com" class="contact-detail">
                         <div class="contact-detail-icon">✉️</div>
                         <span>adavanmanibal@gmail.com</span>
                     </a>
-                    
+
                     <div class="contact-detail">
                         <div class="contact-detail-icon">📍</div>
                         <span>Tours / Paris</span>
@@ -888,18 +1005,25 @@
                 </div>
 
                 <div class="contact-form">
-                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Ceci est une maquette visuelle. Pour que le formulaire fonctionne réellement, il faudra relier l\'attribut action à un service comme Formspree.');">
+                    <!-- Pour rendre le formulaire fonctionnel : créer un formulaire gratuit sur
+                         formspree.io (ou web3forms.com), puis remplacer l'action ci-dessous par
+                         l'URL fournie, la méthode POST, et supprimer l'attribut onsubmit. -->
+                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Formulaire non encore relié à un service d\'envoi. En attendant, écrivez-moi directement à adavanmanibal@gmail.com.');">
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Votre Nom" required>
+                            <label for="nom" class="visually-hidden" style="position:absolute;left:-9999px;">Votre nom</label>
+                            <input id="nom" name="nom" type="text" class="form-input" placeholder="Votre nom" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" placeholder="Votre Email" required>
+                            <label for="email" style="position:absolute;left:-9999px;">Votre email</label>
+                            <input id="email" name="email" type="email" class="form-input" placeholder="Votre email" required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-input" placeholder="Votre Message..." required></textarea>
+                            <label for="message" style="position:absolute;left:-9999px;">Votre message</label>
+                            <textarea id="message" name="message" class="form-input" placeholder="Votre message..." required></textarea>
                         </div>
                         <button type="submit" class="btn-submit">Envoyer le message</button>
                     </form>
+                    <p class="form-note">Vous pouvez aussi m'écrire directement par mail ou m'appeler.</p>
                 </div>
             </div>
         </div>
@@ -915,7 +1039,7 @@
         // --- THÈME SOMBRE ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
-        
+
         const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         htmlElement.setAttribute('data-theme', savedTheme);
         updateThemeButtonText(savedTheme);
@@ -932,12 +1056,13 @@
             themeToggleBtn.textContent = theme === 'dark' ? 'Clair' : 'Sombre';
         }
 
-        // --- ANIMATIONS SCROLL ---
+        // --- ANIMATIONS AU SCROLL ---
         const reveals = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
                 }
             });
         }, { root: null, threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
